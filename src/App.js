@@ -5,7 +5,6 @@ import Cities from "./components/Cities";
 
 function App() {
 	const API_KEY = "1e93fd2826b0c820576eec9b29901ce4";
-
 	useEffect(() => {
 		getCurrentLoc();
 	}, []);
