@@ -16,12 +16,8 @@ const Weather = ({ weather, getCurrent }) => {
 						<span className="text-3xl font-bold font-sans">
 							{weather && weather?.name + `, ` + weather.sys?.country}
 						</span>
-						<span
-							className="material-icons-outlined mx-2 cursor-pointer"
-							onClick={() => getCurrent()}>
-							autorenew
-						</span>
 						<br />
+
 						<span className="text-xs text-slate-500">
 							Humidity {weather?.main?.humidity}%
 						</span>

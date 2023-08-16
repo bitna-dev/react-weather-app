@@ -1,13 +1,13 @@
 import React from "react";
 
-const Cities = ({ cities, setCity }) => {
+const Cities = ({ cities, handleCurrentCity }) => {
 	console.log(cities);
 
 	return (
 		<>
 			<button
 				className="rounded-1xl px-4 bg-slate-300 text-white font-semibold p-2"
-				onClick={() => {}}>
+				onClick={() => handleCurrentCity("current")}>
 				Where You are at
 			</button>
 			{cities.map((city, index) => (
@@ -15,7 +15,7 @@ const Cities = ({ cities, setCity }) => {
 					key={index}
 					className="rounded-1xl px-4 bg-slate-300 text-white font-semibold p-2"
 					onClick={() => {
-						setCity(city);
+						handleCurrentCity(city);
 					}}>
 					{city}
 				</button>
