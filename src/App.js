@@ -5,17 +5,10 @@ import Cities from "./components/Cities";
 
 function App() {
 	const API_KEY = "1e93fd2826b0c820576eec9b29901ce4";
-	useEffect(() => {
-		getCurrentLoc();
-	}, []);
 
 	const [currentWeather, setCurrentWeather] = useState([]);
-	const [city, setCity] = useState("Paris");
+	const [city, setCity] = useState("");
 	const cities = ["Paris", "Seoul", "Toronto"];
-	useEffect(() => {
-		console.log(city);
-		getWeatherByCity();
-	}, [city]);
 
 	//현재위치 구하기
 	const getCurrentLoc = async () => {
@@ -42,19 +35,27 @@ function App() {
 	const getWeatherByCity = async () => {
 		const res = await (
 			await fetch(
-				`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}`
+				`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}&units=imperial`
 			)
 		).json();
 		console.log(res);
+		setCurrentWeather(res);
 	};
+	useEffect(() => {
+		if (city == "") {
+			getCurrentLoc();
+		} else {
+			getWeatherByCity();
+		}
+	}, [city]);
 
 	return (
 		<div className="w-screen h-screen bg-white p-20">
 			<div className="m-auto max-w-3xl w-screen space-y-10">
 				{/* 메인 현재위치 날씨 */}
+				<Cities cities={cities} setCity={setCity} />
 				<Weather weather={currentWeather} getCurrent={() => getCurrentLoc()} />
 				{/* 도시별 날씨 */}
-				<Cities cities={cities} setCity={setCity} />
 			</div>
 		</div>
 	);

@@ -14,7 +14,7 @@ const Weather = ({ weather, getCurrent }) => {
 				<div className="flex flex-col justify-between space-y-8">
 					<div className="">
 						<span className="text-3xl font-bold font-sans">
-							{weather && weather?.name + `,` + weather.sys?.country}
+							{weather && weather?.name + `, ` + weather.sys?.country}
 						</span>
 						<span
 							className="material-icons-outlined mx-2 cursor-pointer"
